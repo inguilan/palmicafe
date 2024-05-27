@@ -1,0 +1,380 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finca la arandia "PALMICAFE"</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="https://palmicafe2.blob.core.windows.net/$web/static/styles.css">
+    <!-- Font Awesome para los íconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estilos para el Hero Image */
+        .hero-image {
+            background-image: url('https://palmicafe2.blob.core.windows.net/$web/static/imagenes/2a8e976139a1373a0ffee6f15539ce29.gif');
+            background-size: cover;
+            background-position: top left; /* Ajusta la posición de la imagen */
+            height: 400px;
+            width: 100%; /* Ajusta el ancho del contenedor */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            border: 10px solid white; /* Añade un borde blanco de 10px alrededor del contenedor */
+            border-radius: 20px; /* Añade bordes redondeados al contenedor */
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Añade una sombra alrededor del contenedor */
+        }
+        
+        /* Estilos para la barra de navegación */
+        .navbar {
+            background-color: #333; /* Cambia el color de fondo */
+            color: white; /* Cambia el color del texto */
+            padding: 10px 20px; /* Ajusta el espaciado interno */
+            position: fixed; /* Fija la barra en la parte superior */
+            width: 100%; /* Ancho completo */
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+            display: flex; /* Usa el modelo de caja flexible */
+            justify-content: space-between; /* Espacia los elementos */
+            align-items: center; /* Alinea verticalmente los elementos en el centro */
+        }
+        
+        /* Estilos para la lista de la barra de navegación */
+        .navbar ul {
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        
+        .navbar ul li {
+            display: inline-block; 
+            margin-left: 30px; /* Espaciado entre elementos */
+        }
+        
+        .navbar ul li:first-child {
+            margin-left: 0; /* Elimina el margen izquierdo del primer elemento */
+        }
+        
+        .navbar ul li a {
+            color: white; /* Color del enlace */
+            text-decoration: none; /* Quita la subrayado */
+            padding: 10px 20px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            transition: background-color 0.3s; /* Transición suave */
+        }
+        
+        .navbar ul li a:hover {
+            background-color: #555; /* Color de fondo al pasar el mouse */
+        }
+        
+        /* Estilos para las secciones principales */
+        .main {
+            padding-top: 120px; /* Espacio para la barra de navegación fija */
+        }
+        
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        /* Estilos para las secciones de categorías y productos */
+        .categorias, .productos {
+            margin-bottom: 50px;
+        }
+        
+        .categoria-list, .producto-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .categoria, .producto {
+            width: 48%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .categoria img, .producto img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .categoria-info, .producto-info {
+            padding: 15px;
+        }
+        
+        .add-category, .add-product {
+            text-align: center;
+        }
+        
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+        
+        /* Estilos para el pie de página */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-left, .footer-right {
+            width: 48%;
+        }
+        
+        .footer-left ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icons li {
+            margin: 0 10px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #ccc;
+        }
+        
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        /* Media Query para pantallas pequeñas */
+        @media only screen and (max-width: 768px) {
+            .hero-image {
+                height: 300px;
+            }
+
+            .categoria, .producto {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#productos">Productos</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Image Section -->
+    <section class="hero-image">
+        <div class="hero-content">
+            <h1>Bienvenido a Finca La Arandia "PALMICAFE"</h1>
+            <!-- Puedes agregar más contenido aquí -->
+        </div>
+    </section>
+
+    <!-- Categorías Section -->
+    <main class="main">
+        <div class="container">
+            <section id="categorias" class="categorias">
+                <h2>Categorías</h2>
+                <div class="categoria-list">
+                    <!-- Categoría 1 -->
+                    <div class="categoria">
+                        <img src="https://palmicafe2.blob.core.windows.net/$web/static/imagenes/palmi.jpg" alt="Café en Grano">
+                        <div class="categoria-info">
+                            <h3>Café en Grano</h3>
+                            <p>Descripción: Variedad de café en grano para preparar deliciosas bebidas.</p>
+                            <button class="delete-btn">Eliminar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoría 2 -->
+                    <div class="categoria">
+                        <img src="https://palmicafe2.blob.core.windows.net/$web/static/imagenes/clasico-molido-torrado-1000.jpg" alt="Café en Grano">
+                        <div class="categoria-info">
+                            <h3>Café molido</h3>
+                            <p>Descripción: Café molido listo para su uso en diferentes métodos de preparación.</p>
+                            <button class="delete-btn">Eliminar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Puedes agregar más categorías aquí -->
+                </div>
+                
+                <!-- Botón para añadir más categorías -->
+                <div class="add-category">
+                    <button id="add-category-btn">Añadir Categoría</button>
+                </div>
+            </section>
+            
+            <!-- Productos Section -->
+            <section id="productos" class="productos">
+                <h2>Productos</h2>
+                <div class="producto-list">
+                    <!-- Producto 1 -->
+                    <div class="producto">
+                        <img src="https://palmicafe2.blob.core.windows.net/$web/static/imagenes/62c8187d97c5c.jpeg" alt="Espresso Italiano">
+                        <div class="producto-info">
+                            <h3>Espresso Italiano</h3>
+                            <p>Descripción: Café espresso intenso con un sabor característico italiano.</p>
+                            <p>Precio: $2.99</p>
+                            <button class="delete-btn">Eliminar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 2 -->
+                    <div class="producto">
+                        <img src="https://palmicafe2.blob.core.windows.net/$web/static/imagenes/cafelatte.jpg" alt="Café Latte">
+                        <div class="producto-info">
+                            <h3>Café Latte</h3>
+                            <p>Descripción: Delicioso café con leche, perfecto para cualquier momento del día.</p>
+                            <p>Precio: $3.49</p>
+                            <button class="delete-btn">Eliminar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Puedes agregar más productos aquí -->
+                </div>
+                
+                <!-- Botón para añadir más productos -->
+                <div class="add-product">
+                    <button id="add-product-btn">Añadir Producto</button>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Contacto</h3>
+                    <p>¡Estamos aquí para ayudarte!</p>
+                    <ul class="contact-info">
+                        <li>Teléfono: 3235806283</li>
+                        <li>Correo electrónico: info@fincalarandia.com</li>
+                        <li>Dirección: finca la arandia, buitrera, palmira</li>
+                    </ul>
+                </div>
+                <div class="footer-right">
+                    <h3>Síguenos en redes sociales</h3>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">Finca la arandia "PALMICAFE"</p>
+        </div>
+    </footer>
+
+    <!-- Agrega tus scripts JavaScript aquí si los necesitas -->
+    <script>
+        // Función para crear y agregar una nueva categoría
+        function addCategory() {
+            // Crea un nuevo elemento div para la categoría
+            const nuevaCategoria = document.createElement('div');
+            nuevaCategoria.classList.add('categoria');
+    
+            // Agrega el contenido de la categoría
+            nuevaCategoria.innerHTML = `
+                <img src="ruta/de/la/imagen.jpg" alt="Nueva Categoría">
+                <div class="categoria-info">
+                    <h3>Nueva Categoría</h3>
+                    <p>Descripción: Descripción de la nueva categoría.</p>
+                    <button class="delete-btn">Eliminar</button>
+                </div>
+            `;
+    
+            // Agrega la nueva categoría a la lista de categorías
+            const listaCategorias = document.querySelector('.categoria-list');
+            listaCategorias.appendChild(nuevaCategoria);
+            
+            // Agrega un evento de clic al botón de eliminar
+            const deleteBtn = nuevaCategoria.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', () => {
+                listaCategorias.removeChild(nuevaCategoria);
+            });
+        }
+    
+        // Agrega un evento de clic al botón "Añadir Categoría"
+        const btnAddCategory = document.getElementById('add-category-btn');
+        btnAddCategory.addEventListener('click', addCategory);
+        
+        // Función para crear y agregar un nuevo producto
+        function addProduct() {
+            // Crea un nuevo elemento div para el producto
+            const nuevoProducto = document.createElement('div');
+            nuevoProducto.classList.add('producto');
+    
+            // Agrega el contenido del producto
+            nuevoProducto.innerHTML = `
+                <img src="ruta/de/la/imagen.jpg" alt="Nuevo Producto">
+                <div class="producto-info">
+                    <h3>Nuevo Producto</h3>
+                    <p>Descripción: Descripción del nuevo producto.</p>
+                    <p>Precio: $0.00</p>
+                    <button class="delete-btn">Eliminar</button>
+                </div>
+            `;
+    
+            // Agrega el nuevo producto a la lista de productos
+            const listaProductos = document.querySelector('.producto-list');
+            listaProductos.appendChild(nuevoProducto);
+            
+            // Agrega un evento de clic al botón de eliminar
+            const deleteBtn = nuevoProducto.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', () => {
+                listaProductos.removeChild(nuevoProducto);
+            });
+        }
+    
+        // Agrega un evento de clic al botón "Añadir Producto"
+        const btnAddProduct = document.getElementById('add-product-btn');
+        btnAddProduct.addEventListener('click', addProduct);
+    </script>
+</body>
+</html>

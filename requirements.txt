@@ -1,0 +1,21 @@
+asgiref==3.8.1
+asttokens==2.4.1
+colorama==0.4.6
+debugpy==1.8.1
+decorator==5.1.1
+distlib==0.3.8
+Django==3.2.10   # Cambiado a una versión compatible con Python 3.8
+djangorestframework==3.15.1
+et-xmlfile==1.1.0
+executing==2.0.1
+filelock==3.14.0
+ipykernel==6.29.4
+ipython>=7.23.1,<8.24.0
+packaging==24.0
+psycopg2==2.9.9
+Pygments==2.18.0
+python-dateutil==2.9.0.post0
+sqlparse==0.5.0
+tzdata==2024.1
+virtualenv==20.26.1
+wcwidth==0.2.13
