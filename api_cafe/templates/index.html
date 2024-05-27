@@ -249,7 +249,7 @@
             <!-- Productos Section -->
             <section id="productos" class="productos">
                 <h2>Productos</h2>
-                <div class="producto-list">
+                <div class="producto-list" id="producto-list">
                     <!-- Producto 1 -->
                     <div class="producto">
                         <img src="https://palmicafe2.blob.core.windows.net/$web/static/imagenes/62c8187d97c5c.jpeg" alt="Espresso Italiano">
@@ -271,7 +271,7 @@
                             <button class="delete-btn">Eliminar</button>
                         </div>
                     </div>
-
+        
                     <div class="producto">
                         <img src="https://palmicafe2.blob.core.windows.net/$web/static/imagenes/cafelatte.jpg" alt="Café Latte">
                         <div class="producto-info">
@@ -289,6 +289,48 @@
                     <button id="add-product-btn">Añadir Producto</button>
                 </div>
             </section>
+        
+            <script>
+                document.getElementById('add-product-btn').addEventListener('click', function() {
+                    // Pedir información del nuevo producto
+                    let nombre = prompt('Nombre del producto:');
+                    let descripcion = prompt('Descripción del producto:');
+                    let precio = prompt('Precio del producto:');
+                    let imagen = prompt('URL de la imagen del producto:');
+        
+                    if (nombre && descripcion && precio && imagen) {
+                        // Crear el nuevo elemento de producto
+                        let nuevoProducto = document.createElement('div');
+                        nuevoProducto.classList.add('producto');
+                        nuevoProducto.innerHTML = `
+                            <img src="${imagen}" alt="${nombre}">
+                            <div class="producto-info">
+                                <h3>${nombre}</h3>
+                                <p>Descripción: ${descripcion}</p>
+                                <p>Precio: $${precio}</p>
+                                <button class="delete-btn">Eliminar</button>
+                            </div>
+                        `;
+        
+                        // Agregar el evento de eliminación al nuevo botón
+                        nuevoProducto.querySelector('.delete-btn').addEventListener('click', function() {
+                            nuevoProducto.remove();
+                        });
+        
+                        // Agregar el nuevo producto a la lista
+                        document.getElementById('producto-list').appendChild(nuevoProducto);
+                    } else {
+                        alert('Todos los campos son obligatorios.');
+                    }
+                });
+        
+                // Agregar funcionalidad de eliminación a los botones existentes
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        button.closest('.producto').remove();
+                    });
+                });
+            </script>
             
         </div>
     </main>
